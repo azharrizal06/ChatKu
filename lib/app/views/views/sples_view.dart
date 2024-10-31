@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../help/colors.dart';
-import '../../modules/home/views/home_view.dart';
+import '../../modules/login/views/login_view.dart';
 
 class SplesView extends StatefulWidget {
   const SplesView({super.key});
@@ -15,7 +15,9 @@ class _SplesViewState extends State<SplesView> {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeView()));
+          // context, MaterialPageRoute(builder: (context) => HomeView()));
+          context,
+          MaterialPageRoute(builder: (context) => LoginView()));
     });
   }
 

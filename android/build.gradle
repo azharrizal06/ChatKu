@@ -1,18 +1,32 @@
-allprojects {
+// Root-level (project-level) build.gradle
+
+// Menyediakan plugin buildscript untuk Gradle dan Google Services
+buildscript {
     repositories {
-        google()
-        mavenCentral()
+        google()         // Repositori Google
+        mavenCentral()   // Repositori Maven Central
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.2' // Versi plugin Gradle Android
+        classpath 'com.google.gms:google-services:4.3.10' // Versi plugin Google Services
     }
 }
 
+allprojects {
+    repositories {
+        google()         // Repositori Google
+        mavenCentral()   // Repositori Maven Central
+    }
+}
+
+// Mengatur build directory untuk proyek
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(":app")
+    project.evaluationDependsOn(":app") // Mengatur dependensi evaluasi untuk subproyek
 }
 
+// Tugas untuk membersihkan build directory
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
